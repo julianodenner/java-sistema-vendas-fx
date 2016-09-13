@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane stylesheets="@css/Geral.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdenner.control.ProdutoController">
+    <children>
+        <VBox fx:id="consulta">
+            <children>
+                <AnchorPane>
+                    <children>
+                        <Label styleClass="title" text="Produtos cadastrados" AnchorPane.leftAnchor="0.0" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" />
+                    </padding>
+                </AnchorPane>
+                <TableView fx:id="tabela" focusTraversable="false">
+                    <columns>
+                        <TableColumn>
+                            <columns>
+                                <TableColumn fx:id="colunaNome" editable="false" prefWidth="475.0" text="Nome" />
+                                <TableColumn fx:id="colunaEditar" editable="false" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" resizable="false" sortable="false" />
+                                <TableColumn fx:id="colunaExcluir" editable="false" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" resizable="false" sortable="false" />
+                            </columns>
+                            <graphic>
+                                <AnchorPane>
+                                    <children>
+                                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#filtrar" styleClass="botao-localizar" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <graphic>
+                                                <HBox>
+                                                    <children>
+                                                        <TextField fx:id="filtro" focusTraversable="false" prefWidth="200.0" promptText="Filtrar" />
+                                                        <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@img/Localizar.png" />
+                                                            </image>
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" left="8.0" right="8.0" top="8.0" />
+                                                            </HBox.margin>
+                                                        </ImageView>
+                                                    </children>
+                                                </HBox>
+                                            </graphic>
+                                        </Button>
+                                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#novo" text="Novo" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                </AnchorPane>
+                            </graphic>
+                        </TableColumn>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+                <Pagination fx:id="paginacao" prefHeight="400.0" />
+            </children>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+        </VBox>
+        <VBox fx:id="formulario" fillWidth="false" spacing="5.0" visible="false">
+            <children>
+                <Label styleClass="title" text="Formulário de produtos" />
+                <Label fx:id="rotuloNome" styleClass="rotulo" text="Nome" />
+                <TextField fx:id="campoNome" prefWidth="350.0" />
+                <Label fx:id="rotuloPrecoCompra" styleClass="rotulo" text="Preço de compra" />
+                <TextField fx:id="campoPrecoCompra" prefWidth="150.0" />
+                <Label fx:id="rotuloPrecoVenda" styleClass="rotulo" text="Preço de venda" />
+                <TextField fx:id="campoPrecoVenda" prefWidth="150.0" />
+                <HBox spacing="5.0">
+                    <children>
+                        <Button fx:id="botaoSalvar" defaultButton="true" mnemonicParsing="false" onAction="#salvar" prefHeight="28.0" prefWidth="130.0" text="Salvar" />
+                        <Button fx:id="botaoCancelar" cancelButton="true" mnemonicParsing="false" onAction="#cancelar" prefHeight="28.0" prefWidth="28.0" text="✕" />
+                    </children>
+                    <padding>
+                        <Insets top="20.0" />
+                    </padding>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+        </VBox>
+    </children>
+</StackPane>

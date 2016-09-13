@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="500.0" prefWidth="800.0" stylesheets="@css/Geral.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdenner.control.MenuController">
+    <left>
+        <VBox prefWidth="180.0" styleClass="menu-lateral" BorderPane.alignment="CENTER">
+            <children>
+                <Label disable="true" text="Menu">
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+                </Label>
+                <HBox onMouseClicked="#abrirVendas" spacing="5.0" styleClass="menu-item">
+                    <children>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/Venda.png" />
+                            </image>
+                        </ImageView>
+                        <Label text="Vendas" />
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                </HBox>
+                <HBox onMouseClicked="#abrirCompras" spacing="5.0" styleClass="menu-item">
+                    <children>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/Compra.png" />
+                            </image>
+                        </ImageView>
+                        <Label text="Compras" />
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                </HBox>
+                <HBox onMouseClicked="#abrirProdutos" spacing="5.0" styleClass="menu-item">
+                    <children>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/Produto.png" />
+                            </image>
+                        </ImageView>
+                        <Label text="Produtos" />
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                </HBox>
+                <HBox onMouseClicked="#abrirClientes" spacing="5.0" styleClass="menu-item">
+                    <children>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/Cliente.png" />
+                            </image>
+                        </ImageView>
+                        <Label text="Clientes" />
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                </HBox>
+                <HBox onMouseClicked="#abrirFornecedores" spacing="5.0" styleClass="menu-item">
+                    <children>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/Fornecedor.png" />
+                            </image>
+                        </ImageView>
+                        <Label text="Fornecedores" />
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                </HBox>
+                <HBox spacing="5.0" styleClass="menu-item">
+                    <children>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/Sobre.png" />
+                            </image>
+                        </ImageView>
+                        <Label text="Sobre" />
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <TabPane fx:id="tabPane" focusTraversable="false" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER" />
+    </center>
+</BorderPane>

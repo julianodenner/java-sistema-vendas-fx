@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="600.0" stylesheets="@css/Geral.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdenner.control.CompraController">
+    <children>
+        <VBox fx:id="consulta" visible="false">
+            <children>
+                <AnchorPane>
+                    <children>
+                        <Label styleClass="title" text="Compras registradas" AnchorPane.leftAnchor="0.0" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" />
+                    </padding>
+                </AnchorPane>
+                <TableView fx:id="tabela" focusTraversable="false">
+                    <columns>
+                        <TableColumn>
+                            <columns>
+                                <TableColumn fx:id="colunaFornecedor" editable="false" prefWidth="250.0" styleClass="esquerda" text="Fornecedor" />
+                                <TableColumn fx:id="colunaData" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" styleClass="centralizado" text="Data" />
+                                <TableColumn fx:id="colunaTotal" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" styleClass="direita" text="Total" />
+                                <TableColumn fx:id="colunaSituacao" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" styleClass="centralizado" text="Situação" />
+                                <TableColumn fx:id="colunaEditar" editable="false" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" resizable="false" sortable="false" />
+                                <TableColumn fx:id="colunaExcluir" editable="false" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" resizable="false" sortable="false" />
+                            </columns>
+                            <graphic>
+                                <AnchorPane>
+                                    <children>
+                                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#filtrar" styleClass="botao-localizar" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <graphic>
+                                                <HBox>
+                                                    <children>
+                                                        <TextField fx:id="filtro" focusTraversable="false" prefWidth="200.0" promptText="Filtrar" />
+                                                        <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@img/Localizar.png" />
+                                                            </image>
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" left="8.0" right="8.0" top="8.0" />
+                                                            </HBox.margin>
+                                                        </ImageView>
+                                                    </children>
+                                                </HBox>
+                                            </graphic>
+                                        </Button>
+                                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#novo" text="Novo" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                </AnchorPane>
+                            </graphic>
+                        </TableColumn>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+                <Pagination fx:id="paginacao" prefHeight="400.0" />
+            </children>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+        </VBox>
+        <VBox fx:id="formulario" fillWidth="false" spacing="5.0" visible="false">
+            <children>
+                <Label styleClass="title" text="Formulário de compras" />
+                <Label fx:id="rotuloFornecedor" styleClass="rotulo" text="Fornecedor" />
+            <ComboBox fx:id="comboFornecedor" editable="true" prefWidth="350.0" />
+            <GridPane prefWidth="550.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label fx:id="rotuloData" styleClass="rotulo" text="Data" />
+                  <DatePicker fx:id="campoData" editable="false" prefWidth="150.0" GridPane.rowIndex="1" />
+                  <Label fx:id="rotuloSituacao" styleClass="rotulo" text="Situação" GridPane.columnIndex="1" />
+                  <HBox fx:id="situacoes" alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <RadioButton fx:id="aberta" mnemonicParsing="false" selected="true" text="Aberta">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="situacao" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="finalizada" mnemonicParsing="false" text="Finalizada" toggleGroup="$situacao" />
+                        <RadioButton fx:id="cancelada" mnemonicParsing="false" text="Cancelada" toggleGroup="$situacao" />
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+            <Label fx:id="rotuloProdutos" styleClass="rotulo" text="Produtos" />
+            <TableView fx:id="tabelaProdutos" prefHeight="200.0" prefWidth="550.0">
+              <columns>
+                  <TableColumn prefWidth="75.0">
+                     <columns>
+                      <TableColumn fx:id="colunaProduto" prefWidth="100.0" styleClass="esquerda" text="Produto" />
+                      <TableColumn fx:id="colunaQuantidade" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" styleClass="direita" text="Quant." />
+                        <TableColumn fx:id="colunaValorUnitario" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" styleClass="direita" text="Valor Unit." />
+                        <TableColumn fx:id="colunaSubtotal" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" styleClass="direita" text="Subtotal" />
+                        <TableColumn fx:id="colunaRemover" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" />
+                     </columns>
+                     <graphic>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#adicionarProduto" text="Adicionar" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                     </graphic>
+                  </TableColumn>
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+                <HBox spacing="5.0">
+                    <children>
+                        <Button fx:id="botaoSalvar" defaultButton="true" mnemonicParsing="false" onAction="#salvar" prefHeight="28.0" prefWidth="130.0" text="Salvar" />
+                        <Button fx:id="botaoCancelar" cancelButton="true" mnemonicParsing="false" onAction="#cancelar" prefHeight="28.0" prefWidth="28.0" text="✕" />
+                    </children>
+                    <padding>
+                        <Insets top="20.0" />
+                    </padding>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+        </VBox>
+      <VBox fx:id="itens" fillWidth="false" spacing="5.0" visible="false">
+         <children>
+            <Label styleClass="title" text="Formulário de compras" />
+            <Label fx:id="rotuloProduto" styleClass="rotulo" text="Produto" />
+            <ComboBox fx:id="comboProduto" editable="true" onAction="#atualizaValor" prefWidth="350.0" />
+            <Label fx:id="rotuloQuantidade" styleClass="rotulo" text="Quantidade" />
+            <TextField fx:id="campoQuantidade" prefWidth="150.0" text="1" />
+            <Label fx:id="rotuloValor" styleClass="rotulo" text="Valor Unitário" />
+            <TextField fx:id="campoValor" prefWidth="150.0" text="0,00" />
+            <HBox spacing="5.0">
+               <children>
+                  <Button fx:id="botaoAdicionarItem" defaultButton="true" mnemonicParsing="false" onAction="#adicionarItem" prefHeight="28.0" prefWidth="130.0" text="Adicionar" />
+                  <Button fx:id="botaoCancelarItem" cancelButton="true" mnemonicParsing="false" onAction="#cancelarItem" prefHeight="28.0" prefWidth="28.0" text="✕" />
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+    </children>
+</StackPane>

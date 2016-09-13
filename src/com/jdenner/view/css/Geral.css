@@ -1,0 +1,45 @@
+* {
+    -fx-accent:  #3373F1;
+    -fx-focus-color: -fx-accent;
+}
+.menu-lateral {
+    -fx-background-color: #eeeeee;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 0 1 0  0 ;
+}
+.menu-item:hover {
+    -fx-background-color: #e3e3e3;
+    -fx-cursor: hand;
+}
+.title {
+    -fx-font-size: 20pt;
+}
+.botao-localizar {
+    -fx-padding: 0;
+}
+.botao-localizar .text-field {
+    -fx-background-color: transparent;
+}
+.button {
+    -fx-font-weight: bold;
+}
+.button:default {
+    -fx-base: -fx-accent;
+}
+.button:cancel{
+    -fx-base: #FF2525;
+}
+.esquerda {
+    -fx-alignment: CENTER_LEFT;   
+}
+.centralizado {
+    -fx-alignment: CENTER;
+}
+.direita {
+    -fx-alignment: CENTER_RIGHT;
+}
+.rotulo {
+    -fx-font-weight: bold;
+    /*-fx-text-fill: -fx-accent;*/
+    -fx-padding: 5 0 0 0;
+}
