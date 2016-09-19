@@ -16,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 import javafx.util.Callback;
+import javax.swing.JOptionPane;
 
 public class VendaController implements Initializable, Controller, Itens {
 
@@ -253,11 +254,27 @@ public class VendaController implements Initializable, Controller, Itens {
         if (erro) {
             return;
         }
+        
+        if (venda.getSituacao() == Situacao.FINALIZADA) {
+            for (Venda.ItemVenda iv : venda.getItens()) {
+                try {
+                    if (iv.getQuantidade() > ProdutoDAO.recuperar(iv.getProduto().getCodigo()).getQuantidade()) {
+                        String msg = "Impossível finalizar.\n" + iv.getProduto() + " em falta no estoque.";
+                        new Alert(Alert.AlertType.WARNING, msg, ButtonType.OK).show();
+                        return;
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    return;
+                }
+            }
+        }
 
         try {
             VendaDAO.salvar(venda);
         } catch (Exception e) {
             e.printStackTrace();
+            return;
         }
 
         trocar(1);
